@@ -21,7 +21,11 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 	acl \
 	file \
 	gettext \
-	git \
+	git \ 
+	make \
+	npm \
+	yarn \
+	bash \
 	&& rm -rf /var/lib/apt/lists/*
 
 RUN set -eux; \
