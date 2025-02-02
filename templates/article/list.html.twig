@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello ArticleController!{% endblock %}
+
+{% block body %}
+<style>
+    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
+    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+</style>
+
+<div class="example-wrapper">
+    <h1>Hello {{ controller_name }}! ✅</h1>
+
+    This friendly message is coming from:
+    <ul>
+        <li>Your controller at <code>/app/src/Controller/ArticleController.php</code></li>
+        <li>Your template at <code>/app/templates/article/list.html.twig</code></li>
+    </ul>
+
+    <div class="row">
+        {% for article in articles %}
+            <div class="col-sm-6 mb-3 mb-sm-0">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ article.titre }}</h5>
+                        <a href="{{ path('show_article', {'id': article.id}) }}" class="btn btn-primary">Details of {{ article.id }}</a>
+                        {% if article.publie %}
+                            {{ ux_icon('bi:check2-square', {width: '16', height: '16'}) }}
+                        {% else %}
+                            {{ ux_icon('bi:x-square', {width: '16', height: '16'}) }}
+                        {% endif %}
+                        <p class="card-text">Published on: {{ article.date|date('Y-m-d H:i:s') }}</p>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

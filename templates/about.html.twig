@@ -15,6 +15,7 @@
         {% block javascripts %} {{encore_entry_script_tags('app')}}
         {% endblock %}
     </head>
+
     <body>
         <div class ="menutop">
             {% include 'menutop.inc.html.twig' %}
@@ -23,12 +24,5 @@
             {% block body %}
             {% endblock %}
         </div>
-        <div class="messages">
-            {% for message in app.flashes('success') %}
-                <div class="alert alert-success">
-                    {{ message }}
-                </div>
-            {% endfor %}
-        </div> 
     </body>
 </html>

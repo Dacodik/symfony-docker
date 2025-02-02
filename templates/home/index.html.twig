@@ -1,4 +1,4 @@
-{% extends 'base.html.twig' %}
+{% extends 'home.html.twig' %}
 
 {% block title %}Hello LuckyController!{% endblock %}
 
@@ -13,4 +13,21 @@
 
     This friendly message is coming from index function into HomeController ;-/
 </div>
+<li>
+    <div class="card" style="width: 18rem;">
+        <img src="{{ asset('img/new.png') }}" class="card-img-top" alt="new">
+        <div class="card-body">
+            <h5 class="card-title">Nouvel article</h5>
+            <a href="{{ path('article_new') }}" class="btn btn-primary">Create a new article</a>
+        </div>
+    </div>
+    
+    <div class="card" style="width: 18rem;">
+        <img src="{{ asset('img/list.png') }}" class="card-img-top" alt="list">
+        <div class="card-body">
+            <h5 class="card-title">Liste article</h5>
+            <a href="{{ path('list_article') }}" class="btn btn-primary">Liste</a>
+        </div>
+    </div>
+</li>
 {% endblock %}

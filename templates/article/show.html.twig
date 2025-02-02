@@ -1,0 +1,68 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello ArticleController!{% endblock %}
+
+{% block body %}
+<style>
+    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
+    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+</style>
+
+<div>
+    <h1>Hello {{ controller_name }}! ✅</h1>
+
+    This friendly message is coming from:
+    <ul>
+        <li>Your controller at <code>/app/src/Controller/ArticleController.php</code></li>
+        <li>Your template at <code>/app/templates/article/show.html.twig</code></li>
+    </ul>
+
+    <ul>
+        <div>
+            <a href="{{ path('list_article') }}" class="btn btn-primary">←</a>
+        </div>
+        <div class="card" style="width: 75rem;">
+            <img src="..." class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title">{{articles.titre}}</h5>
+                <p>{{ articles.texte }}</p>
+                <a href="{{ path('article_edit', {'id': articles.id}) }}" class="btn btn-primary">Edit {{ articles.id }}</a>
+                <form method="post" action="{{ path('article_delete', {'id': articles.id}) }}" onsubmit="return confirm('Are you sure you want to delete this article?');">
+                    <button class="btn btn-danger">Delete {{ articles.id }}</button>
+                </form>
+            </div>
+        </div>
+    </ul>
+    <div class="mt-5">
+        <h2 class="text-2xl.mb-8">Comments</h2>
+        <div class = "comments">
+            {% for comment in comments %}
+            <div class="comment flex justify-start mb-4">
+                <div>
+                    <div class="block p-6 rounded-lg shadow-lg bg-white">
+                        <div class="md:flex md:flex-row">
+                            <div class="md:w-96 w-24 flex justify-center items-center mb-6 lg:mb-0 mx-auto md:mx-0">
+                                {% if comment.user.avatar %}
+                                    <img src="{{comment.user.avatar}}" alt="{{comment.user}}'s avatar"/>
+                                {% else %}
+                                    <img src="https://ui-avatars.com/api/?name={{ comment.user.username }}" alt="avatar" class="w-24 h-24 rounded-full">
+                                {% endif %}
+                            </div>
+                            <div class = "md:ml-6">
+                                <p class="text-gray-500 font-light mb-6">
+                                    {{ comment.content|raw }}
+                                </p>
+                                <p class="font-semibold text-xl mb-2 text-gray-800">
+                                    {{ comment.user }}
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+
+    </div>
+</div>
+{% endblock %}
